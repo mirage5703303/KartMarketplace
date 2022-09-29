@@ -98,7 +98,7 @@ router.post(`/needmoney`, async (req, res) => {
             } 
             else{ 
                 // res.status(200).json({data: 'data updated successfully'});
-                res.json({ result : docs});
+                // res.json({ result : docs});
             } 
         }
 
@@ -117,4 +117,17 @@ router.get('/gettable' , (req,res) => {
         }
     }) 
 })
+
+//send data to unity
+router.post('/getcarinf' , (req,res) => {
+    Gameusers.findOne({email : req.body.username} , (err, docs) => {
+        if (err ){ 
+            throw(err);
+        }
+        else {
+            res.json(docs);
+        }
+    }) 
+})
+
 module.exports = router;
